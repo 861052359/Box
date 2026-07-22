@@ -45,7 +45,7 @@ jobs:
           timeout_minutes: 45
           max_attempts: 3
           retry_on: error
-          command: ./gradlew assembleRelease --build-cache --parallel --daemon --warning-mode all
+          command: ./gradlew assembleArm64GenericNormalRelease --build-cache --parallel --daemon --warning-mode all
 
       - name: Prepare APKs
         run: |

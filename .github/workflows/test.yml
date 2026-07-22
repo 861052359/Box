@@ -22,6 +22,20 @@ jobs:
       - name: Setup Android SDK
         uses: android-actions/setup-android@v3
 
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.8'
+
+      - name: Create local.properties
+        run: |
+          echo "sdk.dir=$ANDROID_SDK_ROOT" > local.properties
+          cat local.properties
+
+      - name: Fix Chaquopy Python path for CI
+        run: |
+          sed -i 's|buildPython("D:/Programs/Python/Python38/python.exe")|buildPython("python3")|' pyramid/build.gradle
+
       - name: Grant execute permission for gradlew
         run: chmod +x gradlew
 
